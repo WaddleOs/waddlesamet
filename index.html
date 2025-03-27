@@ -33,7 +33,62 @@
         <h1>WaddleGuard Kontrol Paneli</h1>
         <div class="button-container">
             <button onclick="handleLock()">Ekranı Kilitle</button>
-            <button onclick="handleUnlock()">Ekranı Aç</button>
+            <button onclick="handleUnlock()">import tkinter as tk
+from tkinter import simpledialog, messagebox
+import psutil
+import os
+import time
+import threading
+
+def check_process():
+    while True:
+        if any(proc.name().lower() == "opera.exe" for proc in psutil.process_iter(attrs=['name'])):
+            show_guard_screen()
+        time.sleep(2)  # 2 saniyede bir kontrol et
+
+def show_guard_screen():
+    global attempt, root
+    if root is not None and root.winfo_exists():
+        return  # Pencere zaten açıksa tekrar açma
+    
+    root = tk.Tk()
+    root.title("Waddle Guard")
+    root.attributes('-fullscreen', True)
+    root.attributes('-topmost', True)
+    root.configure(bg='black')
+    
+    label = tk.Label(root, text="İzinsiz Uygulama Tespit Edildi!", fg='white', bg='black', font=('Arial', 20))
+    label.pack(pady=20)
+    
+    entry = tk.Entry(root, show='*', font=('Arial', 14))
+    entry.pack(pady=10)
+    
+    button = tk.Button(root, text="Şifreyi Gir", command=on_submit, font=('Arial', 14))
+    button.pack(pady=10)
+    
+    root.mainloop()
+
+def on_submit():
+    global attempt, root
+    password = entry.get()
+    if password == CORRECT_PASSWORD:
+        root.destroy()
+    else:
+        attempt += 1
+        messagebox.showerror("Hatalı Giriş", f"Yanlış şifre! {3 - attempt} deneme hakkın kaldı.")
+        entry.delete(0, tk.END)
+
+def background_monitor():
+    while True:
+        check_process()
+        time.sleep(2)
+
+CORRECT_PASSWORD = "1234"  # Şifreni buraya yaz
+attempt = 0
+root = None
+
+threading.Thread(target=background_monitor, daemon=True).start()
+</button>
         </div>
     </div>
 
