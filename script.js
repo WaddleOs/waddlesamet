@@ -20,7 +20,7 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
 
 async function handleLock() {
     try {
-        await fetch('http://192.168.1.118:5000/1');
+        await fetch('http://192.168.1.118:5000/ekrankilit');
         alert('Ekran kilitleme komutu gönderildi');
     } catch (error) {
         alert('Bağlantı hatası!');
@@ -29,7 +29,7 @@ async function handleLock() {
 
 async function handleUnlock() {
     try {
-        await fetch('http://192.168.1.118:5000/2');
+        await fetch('http://192.168.1.118:5000/ekranclose');
         alert('Ekran açma komutu gönderildi');
     } catch (error) {
         alert('Bağlantı hatası!');
