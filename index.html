@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaddleGuard</title>
+    <link rel="stylesheet" href="styless.css">
+</head>
+<body>
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <h1>WaddleGuard Başlatılıyor</h1>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <div id="loginScreen" class="login-screen hidden">
+        <div class="login-container">
+            <h1>WaddleGuard</h1>
+            <form id="loginForm" class="login-form">
+                <div class="input-group">
+                    <input type="text" id="username" placeholder="Kullanıcı Adı" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" placeholder="Şifre" required>
+                </div>
+                <button type="submit">Giriş Yap</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="controlPanel" class="control-panel hidden">
+        <h1>WaddleGuard Kontrol Paneli</h1>
+        <div class="button-container">
+            <button onclick="handleLock()">Ekranı Kilitle</button>
+            <button onclick="handleUnlock()">Ekranı Aç</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
